@@ -16,10 +16,7 @@ export default function MasterArchive() {
     <section className="max-w-7xl mx-auto px-6 py-16 bg-white/70">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Left: Cat Immortal Archive */}
-        <div className="lg:col-span-5">
-          <h2 className="title-font text-6xl font-bold mb-8 flex items-center gap-4">
-            🐾 猫大仙档案
-          </h2>
+        <div className="lg:col-span-10">
           <div className="bg-white thick-border rounded-3xl p-10 shadow-xl">
             <div className="text-2xl leading-relaxed space-y-6">
               <p>贫道乃<strong>雾山猫仙</strong>，修行九载，通猫语、晓星象、辨毛色、断祸福。</p>
@@ -50,11 +47,6 @@ export default function MasterArchive() {
           </div>
         </div>
 
-        {/* Right: Classic Quotes */}
-        <div className="lg:col-span-7">
-          <h2 className="title-font text-5xl font-bold mb-8">大仙金句 · 永不过时</h2>
-          {/* We'll move full quotes here later or use QuotesSection */}
-        </div>
       </div>
     </section>
   );

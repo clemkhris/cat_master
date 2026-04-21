@@ -103,9 +103,26 @@ export default function CatMasterPage() {
         </div>
       </section>
 
-      {/* Main Content */}
-      <MasterArchive />
-      <QuotesSection />
+      {/* === Archive + Quotes Side by Side === */}
+      <section className="max-w-7xl mx-auto px-6 py-16 bg-white/70">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">   {/* ← Change to items-start */}
+
+          {/* Left: Master Archive */}
+          <div className="lg:col-span-5">
+          <h2 className="title-font text-6xl font-bold mb-8 flex items-center gap-4">
+            🐾 猫大仙档案
+          </h2>
+            <MasterArchive />
+          </div>
+
+          {/* Right: Quotes Section */}
+          <div className="lg:col-span-7">
+          <h2 className="title-font text-5xl font-bold mb-8">大仙金句 · 永不过时</h2>
+            <QuotesSection />
+          </div>
+
+        </div>
+      </section>
       <TestsSection />
 
       {/* Community Section + Footer */}

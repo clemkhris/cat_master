@@ -15,7 +15,6 @@ export default function QuotesSection() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-16">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="title-font text-5xl font-bold">大仙金句 · 永不过时</h2>
         <button 
           onClick={() => setShowAll(!showAll)}
           className="px-8 py-3 bg-white hover:bg-gray-100 rounded-3xl thick-border font-bold transition"
