@@ -1,40 +1,34 @@
-import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
-import "./globals.css";
+// src/app/cat_master/layout.tsx
+import type { Metadata } from 'next';
+import { Comic_Neue, Noto_Sans_SC } from 'next/font/google';
+import './globals.css';
 
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
-
-export const metadata: Metadata = {
-  metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
-};
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  display: "swap",
-  subsets: ["latin"],
+const notoSansSC = Noto_Sans_SC({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-noto-sans-sc',
 });
 
-export default function RootLayout({
+const comicNeue = Comic_Neue({
+  subsets: ['latin'],
+  weight: ['700'],
+  variable: '--font-comic-neue',
+});
+
+export const metadata: Metadata = {
+  title: '喵喵喵事务所 · 猫大仙灵验馆',
+  description: '猫大仙灵验馆 - 专业猫咪玄学与灵性指导',
+};
+
+export default function CatMasterLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+    <html lang="zh-CN" className={`${notoSansSC.variable} ${comicNeue.variable}`}>
+      <body className="bg-gradient-to-br from-pink-300 via-yellow-200 to-blue-300 min-h-screen text-[#3D2B1F] overflow-x-hidden font-sans">
+        {children}
       </body>
     </html>
   );

@@ -1,58 +1,115 @@
-import { DeployButton } from "@/components/deploy-button";
-import { EnvVarWarning } from "@/components/env-var-warning";
-import { AuthButton } from "@/components/auth-button";
-import { Hero } from "@/components/hero";
-import { ThemeSwitcher } from "@/components/theme-switcher";
-import { ConnectSupabaseSteps } from "@/components/tutorial/connect-supabase-steps";
-import { SignUpUserSteps } from "@/components/tutorial/sign-up-user-steps";
-import { hasEnvVars } from "@/lib/utils";
-import Link from "next/link";
-import { Suspense } from "react";
+// src/app/cat_master/page.tsx
+'use client';
 
-export default function Home() {
+import { useLanguage } from '@src/hooks/useLanguage';
+import MasterArchive from '@src/components/cat_master/masterArchive';
+import QuotesSection from '@src/components/cat_master/QuotesSection';
+import TestsSection from '@src/components/cat_master/TestsSection';
+import { useEffect, useState } from 'react';
+
+export default function CatMasterPage() {
+  const { t, lang, setLang } = useLanguage();
+
+  // You can move all your data here or to a separate data file later
+  const [posts, setPosts] = useState([
+    { id: 1, user: "铲屎官小明", content: "我家主子是白狮子猫...", likes: 23 },
+    // ...
+  ]);
+
   return (
-    <main className="min-h-screen flex flex-col items-center">
-      <div className="flex-1 w-full flex flex-col gap-20 items-center">
-        <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-          <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
-            <div className="flex gap-5 items-center font-semibold">
-              <Link href={"/"}>Next.js Supabase Starter</Link>
-              <div className="flex items-center gap-2">
-                <DeployButton />
-              </div>
+    <>
+      {/* Navbar */}
+      <nav className="bg-gradient-to-r from-yellow-300 to-blue-300 border-b-8 border-[#3D2B1F] py-4 sticky top-0 z-50 shadow-xl">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 bg-white rounded-2xl border-[10px] border-[#3D2B1F] flex items-center justify-center text-4xl shadow-lg">
+              🐱🔮
             </div>
-            {!hasEnvVars ? (
-              <EnvVarWarning />
-            ) : (
-              <Suspense>
-                <AuthButton />
-              </Suspense>
-            )}
+            <div>
+              <div className="font-bold text-4xl tracking-tighter title-font drop-shadow-md">喵喵喵事务所</div>
+              <div className="text-pink-600 text-xl font-bold -mt-2">猫大仙灵验馆</div>
+            </div>
           </div>
-        </nav>
-        <div className="flex-1 flex flex-col gap-20 max-w-5xl p-5">
-          <Hero />
-          <main className="flex-1 flex flex-col gap-6 px-4">
-            <h2 className="font-medium text-xl mb-4">Next steps</h2>
-            {hasEnvVars ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
-          </main>
+
+          <div className="flex gap-6 text-lg font-bold">
+            <button className="px-8 py-3 bg-blue-400 hover:bg-blue-500 rounded-3xl border-[10px] border-[#3D2B1F] text-white flex items-center gap-2 transition">
+              {t('navDoctor')} <span className="text-xs bg-white text-blue-600 px-2 py-0.5 rounded-full">专业</span>
+            </button>
+            <button className="px-8 py-3 bg-pink-500 hover:bg-pink-600 rounded-3xl border-[10px] border-[#3D2B1F] text-white flex items-center gap-2 transition">
+              {t('navImmortal')} <span className="text-xs bg-white text-pink-600 px-2 py-0.5 rounded-full">灵验</span>
+            </button>
+            <button className="px-8 py-3 bg-orange-400 hover:bg-orange-500 rounded-3xl border-[10px] border-[#3D2B1F] text-white flex items-center gap-2 transition">
+              {t('navButler')} <span className="text-xs bg-white text-orange-600 px-2 py-0.5 rounded-full">实用</span>
+            </button>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <button className="px-6 py-3 bg-white rounded-3xl border-[10px] border-[#3D2B1F] hover:bg-yellow-100">🔍 搜玄学</button>
+            <button 
+              onClick={() => alert('今日猫运功能开发中...')} 
+              className="px-6 py-3 bg-orange-400 hover:bg-orange-500 text-white rounded-3xl border-[10px] border-[#3D2B1F]"
+            >
+              {t('todayLuck')}
+            </button>
+
+            {/* Language Switcher */}
+            <div className="flex border-4 border-[#3D2B1F] rounded-3xl overflow-hidden">
+              <button 
+                onClick={() => setLang('zh-CN')}
+                className={`px-4 py-2 text-sm font-bold ${lang === 'zh-CN' ? 'bg-pink-500 text-white' : 'bg-white'}`}
+              >
+                中文
+              </button>
+              <button 
+                onClick={() => setLang('en')}
+                className={`px-4 py-2 text-sm font-bold ${lang === 'en' ? 'bg-pink-500 text-white' : 'bg-white'}`}
+              >
+                EN
+              </button>
+            </div>
+
+            <button className="px-6 py-3 bg-white rounded-3xl border-[10px] border-[#3D2B1F] hover:bg-pink-100">
+              {t('login')}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Background + gradient overlay */}
+        <div className="absolute inset-0 bg-[url('https://picsum.photos/id/1015/2000/1200')] bg-cover bg-center" 
+             style={{ filter: 'contrast(1.05) saturate(1.15)' }}>
+          <div className="absolute inset-0 bg-gradient-to-br from-pink-400/30 to-blue-400/30" />
         </div>
 
-        <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
-          <p>
-            Powered by{" "}
-            <a
-              href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-              target="_blank"
-              className="font-bold hover:underline"
-              rel="noreferrer"
-            >
-              Supabase
-            </a>
+        <div className="relative z-10 text-center px-6">
+          <div className="text-6xl mb-4 animate-float">🔥</div>
+          <h1 className="title-font text-8xl font-black text-white drop-shadow-[6px_6px_0_#3D2B1F] tracking-tighter leading-none">
+            {t('heroTitle')}
+          </h1>
+          <p className="max-w-2xl mx-auto mt-6 text-2xl text-white drop-shadow-md font-medium">
+            {t('heroSubtitle')}
           </p>
-          <ThemeSwitcher />
-        </footer>
-      </div>
-    </main>
+
+          <div className="flex gap-6 mt-12 justify-center">
+            <button className="px-12 py-6 bg-orange-400 hover:bg-orange-500 text-white text-2xl font-bold rounded-3xl border-[10px] border-[#3D2B1F] shadow-xl transition">
+              {t('startDivination')}
+            </button>
+            <button className="px-12 py-6 bg-yellow-300 hover:bg-yellow-400 text-[#3D2B1F] text-2xl font-bold rounded-3xl border-[10px] border-[#3D2B1F] shadow-xl transition">
+              {t('hearQuote')}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <MasterArchive />
+      <QuotesSection />
+      <TestsSection />
+
+      {/* Community Section + Footer */}
+      {/* You can create more components similarly */}
+    </>
   );
 }
