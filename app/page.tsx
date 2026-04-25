@@ -73,8 +73,9 @@ export default function CatMasterPage() {
           </div>
         </div>
       </nav>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-8">
+
+      {/* Hero Section - Optimized for All Devices */}
+      <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden py-8 md:py-0">
         {/* Background */}
         <div className="absolute inset-0 bg-[url('https://picsum.photos/id/53/2000/1200')] bg-cover bg-center" 
             style={{ filter: 'contrast(1.05) saturate(1.15)' }}>
@@ -82,11 +83,11 @@ export default function CatMasterPage() {
         </div>
 
         <div className="relative z-10 text-center px-6 w-full max-w-5xl">
-          <div className="text-6xl mb-4 animate-float">🔥</div>
-          <h1 className="title-font text-7xl md:text-8xl font-black text-white drop-shadow-[6px_6px_0_#3D2B1F] tracking-tighter leading-none">
+          <div className="text-5xl md:text-6xl mb-4 animate-float">🔥</div>
+          <h1 className="title-font text-6xl md:text-7xl lg:text-8xl font-black text-white drop-shadow-[6px_6px_0_#3D2B1F] tracking-tighter leading-none">
             {t('heroTitle')}
           </h1>
-          <p className="max-w-2xl mx-auto mt-6 text-xl md:text-2xl text-white drop-shadow-md font-medium">
+          <p className="max-w-2xl mx-auto mt-6 text-lg md:text-xl lg:text-2xl text-white drop-shadow-md font-medium">
             {t('heroSubtitle')}
           </p>
 
