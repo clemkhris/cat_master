@@ -77,8 +77,8 @@ export default function CatMasterPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background + gradient overlay */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-8">
+        {/* Background */}
         <div className="absolute inset-0 bg-[url('https://picsum.photos/id/53/2000/1200')] bg-cover bg-center" 
             style={{ filter: 'contrast(1.05) saturate(1.15)' }}>
           <div className="absolute inset-0 bg-gradient-to-br from-pink-400/30 to-blue-400/30" />
@@ -86,14 +86,13 @@ export default function CatMasterPage() {
 
         <div className="relative z-10 text-center px-6 w-full max-w-5xl">
           <div className="text-6xl mb-4 animate-float">🔥</div>
-          <h1 className="title-font text-8xl font-black text-white drop-shadow-[6px_6px_0_#3D2B1F] tracking-tighter leading-none">
+          <h1 className="title-font text-7xl md:text-8xl font-black text-white drop-shadow-[6px_6px_0_#3D2B1F] tracking-tighter leading-none">
             {t('heroTitle')}
           </h1>
-          <p className="max-w-2xl mx-auto mt-6 text-2xl text-white drop-shadow-md font-medium">
+          <p className="max-w-2xl mx-auto mt-6 text-xl md:text-2xl text-white drop-shadow-md font-medium">
             {t('heroSubtitle')}
           </p>
 
-          {/* Use the new component */}
           <HeroDivination />
         </div>
       </section>
