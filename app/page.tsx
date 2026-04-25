@@ -5,6 +5,7 @@ import { useLanguage } from '@src/hooks/useLanguage';
 import MasterArchive from '@src/components/cat_master/masterArchive';
 import QuotesSection from '@src/components/cat_master/QuotesSection';
 import TestsSection from '@src/components/cat_master/TestsSection';
+import HeroDivination from '@src/components/cat_master/HeroDivination';
 import { useEffect, useState } from 'react';
 
 export default function CatMasterPage() {
@@ -78,12 +79,12 @@ export default function CatMasterPage() {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background + gradient overlay */}
-        <div className="absolute inset-0 bg-[url('https://picsum.photos/id/1015/2000/1200')] bg-cover bg-center" 
-             style={{ filter: 'contrast(1.05) saturate(1.15)' }}>
+        <div className="absolute inset-0 bg-[url('https://picsum.photos/id/53/2000/1200')] bg-cover bg-center" 
+            style={{ filter: 'contrast(1.05) saturate(1.15)' }}>
           <div className="absolute inset-0 bg-gradient-to-br from-pink-400/30 to-blue-400/30" />
         </div>
 
-        <div className="relative z-10 text-center px-6">
+        <div className="relative z-10 text-center px-6 w-full max-w-5xl">
           <div className="text-6xl mb-4 animate-float">🔥</div>
           <h1 className="title-font text-8xl font-black text-white drop-shadow-[6px_6px_0_#3D2B1F] tracking-tighter leading-none">
             {t('heroTitle')}
@@ -92,14 +93,8 @@ export default function CatMasterPage() {
             {t('heroSubtitle')}
           </p>
 
-          <div className="flex gap-6 mt-12 justify-center">
-            <button className="px-12 py-6 bg-orange-400 hover:bg-orange-500 text-white text-2xl font-bold rounded-3xl border-[10px] border-[#3D2B1F] shadow-xl transition">
-              {t('startDivination')}
-            </button>
-            <button className="px-12 py-6 bg-yellow-300 hover:bg-yellow-400 text-[#3D2B1F] text-2xl font-bold rounded-3xl border-[10px] border-[#3D2B1F] shadow-xl transition">
-              {t('hearQuote')}
-            </button>
-          </div>
+          {/* Use the new component */}
+          <HeroDivination />
         </div>
       </section>
 
