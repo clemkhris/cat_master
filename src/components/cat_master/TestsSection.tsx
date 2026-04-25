@@ -17,7 +17,7 @@ export default function TestsSection() {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setTimeout(() => setSelectedTest(null), 300); // smooth close
+    setTimeout(() => setSelectedTest(null), 300);
   };
 
   return (
@@ -34,31 +34,35 @@ export default function TestsSection() {
           </p>
         </div>
 
+        {/* Improved Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {tests.map((test) => (
             <div 
               key={test.id} 
               onClick={() => openTest(test)}
-              className="card bg-white thick-border rounded-3xl p-8 cursor-pointer hover:scale-105 transition-all active:scale-95"
+              className="group bg-white thick-border rounded-3xl p-8 cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300 flex flex-col h-full border-[#3D2B1F] hover:shadow-xl"
             >
-              <div className="text-7xl mb-6">{test.emoji}</div>
-              <div className="text-2xl font-bold mb-3">
+              <div className="text-7xl mb-6 transition-transform group-hover:scale-110">{test.emoji}</div>
+              
+              <div className="text-2xl font-bold mb-3 title-font min-h-[3.5rem]">
                 {test.title[lang]}
               </div>
-              <div className="text-[#3D2B1F]/70 leading-relaxed">
+              
+              <div className="text-[#3D2B1F]/70 leading-relaxed flex-1 mb-8">
                 {test.desc[lang]}
               </div>
-              <div className="mt-8 flex justify-end">
-                <span className="bg-[#3D2B1F] text-white px-6 py-2 rounded-2xl text-sm font-bold">
+
+              {/* Aligned Button at Bottom */}
+              <div className="mt-auto">
+                <div className="bg-[#3D2B1F] text-white px-8 py-3 rounded-2xl text-sm font-bold text-center tracking-wider hover:bg-pink-600 transition-colors">
                   {lang === 'zh-CN' ? '立即占卜 →' : 'Divine Now →'}
-                </span>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Modal */}
       <TestModal 
         test={selectedTest} 
         isOpen={isModalOpen} 
