@@ -9,7 +9,7 @@ const quotes = [
 ];
 
 export default function QuotesSection() {
-  const [visibleQuotes, setVisibleQuotes] = useState(quotes.slice(0, 4));
+  const visibleQuotes = quotes.slice(0, 4);
   const [showAll, setShowAll] = useState(false);
 
   return (

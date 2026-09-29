@@ -1,10 +1,8 @@
 // app/(cat-master)/masterArchive.tsx
 'use client';
 
-import { useLanguage } from '@src/hooks/useLanguage';
 
 export default function MasterArchive() {
-  const { t } = useLanguage();
 
   const scenes = [
     "能寻到我这‘云深不知处’的，都是有仙缘的主儿，算你有眼光！（摇尾巴转圈）",

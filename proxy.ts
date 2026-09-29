@@ -1,7 +1,12 @@
 import { updateSession } from "@/lib/supabase/proxy";
-import { type NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 export async function proxy(request: NextRequest) {
+  // Public MIAO sections do not need Supabase or a login round-trip.
+  const pathname = request.nextUrl.pathname;
+  if (!pathname.startsWith("/protected") && !pathname.startsWith("/auth")) {
+    return NextResponse.next();
+  }
   return await updateSession(request);
 }
 

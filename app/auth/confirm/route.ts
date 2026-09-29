@@ -7,7 +7,8 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const token_hash = searchParams.get("token_hash");
   const type = searchParams.get("type") as EmailOtpType | null;
-  const next = searchParams.get("next") ?? "/";
+  const requestedNext = searchParams.get("next") ?? "/miao";
+  const next = (requestedNext === "/miao" || requestedNext.startsWith("/miao/")) && !/[\\\r\n]/.test(requestedNext) ? requestedNext : "/miao";
 
   if (token_hash && type) {
     const supabase = await createClient();
@@ -21,10 +22,10 @@ export async function GET(request: NextRequest) {
       redirect(next);
     } else {
       // redirect the user to an error page with some instructions
-      redirect(`/auth/error?error=${error?.message}`);
+      redirect(`/miao/auth/error?error=${error?.message}`);
     }
   }
 
   // redirect the user to an error page with some instructions
-  redirect(`/auth/error?error=No token hash or type`);
+  redirect(`/miao/auth/error?error=No token hash or type`);
 }

@@ -66,3 +66,6 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Local font stacks keep mainland builds independent of Google Fonts. */
+:root { --font-noto-sans-sc: "PingFang SC", "Microsoft YaHei", sans-serif; --font-comic-neue: "Comic Sans MS", "PingFang SC", cursive; }

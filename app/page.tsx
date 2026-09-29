@@ -6,78 +6,16 @@ import MasterArchive from '@src/components/cat_master/masterArchive';
 import QuotesSection from '@src/components/cat_master/QuotesSection';
 import TestsSection from '@src/components/cat_master/TestsSection';
 import HeroDivination from '@src/components/cat_master/HeroDivination';
-import { useEffect, useState } from 'react';
 
 export default function CatMasterPage() {
-  const { t, lang, setLang } = useLanguage();
-
-  // You can move all your data here or to a separate data file later
-  const [posts, setPosts] = useState([
-    { id: 1, user: "铲屎官小明", content: "我家主子是白狮子猫...", likes: 23 },
-    // ...
-  ]);
+  const { t } = useLanguage();
 
   return (
     <>
-      {/* Navbar - Improved & Consistent */}
-      <nav className="bg-gradient-to-r from-yellow-300 via-pink-300 to-blue-300 border-b-8 border-[#3D2B1F] py-4 sticky top-0 z-50 shadow-xl">
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          
-          {/* Logo */}
-          <div className="flex items-center gap-4">
-            <div className="w-16 h-16 bg-white rounded-2xl border-[10px] border-[#3D2B1F] flex items-center justify-center text-4xl shadow-lg">
-              🐱🔮
-            </div>
-            <div>
-              <div className="font-bold text-4xl tracking-tighter title-font drop-shadow-md">喵喵喵事务所</div>
-              <div className="text-pink-600 text-xl font-bold -mt-1">猫大仙灵验馆</div>
-            </div>
-          </div>
-
-          {/* Navigation Buttons - Now Same Size */}
-          <div className="hidden md:flex gap-3">
-            <button className="px-7 py-3 bg-blue-400 hover:bg-blue-500 text-white font-bold rounded-3xl border-[8px] border-[#3D2B1F] transition-all hover:scale-105 active:scale-95 whitespace-nowrap">
-              猫博士 <span className="text-xs bg-white text-blue-600 px-2 py-0.5 rounded-full font-normal">专业</span>
-            </button>
-
-            <button className="px-7 py-3 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-3xl border-[8px] border-[#3D2B1F] transition-all hover:scale-105 active:scale-95 whitespace-nowrap">
-              猫大仙 <span className="text-xs bg-white text-pink-600 px-2 py-0.5 rounded-full font-normal">灵验</span>
-            </button>
-
-            <button className="px-7 py-3 bg-orange-400 hover:bg-orange-500 text-white font-bold rounded-3xl border-[8px] border-[#3D2B1F] transition-all hover:scale-105 active:scale-95 whitespace-nowrap">
-              猫管家 <span className="text-xs bg-white text-orange-600 px-2 py-0.5 rounded-full font-normal">实用</span>
-            </button>
-          </div>
-
-          {/* Right Side Tools */}
-          <div className="flex items-center gap-3">
-            
-            {/* Search */}
-            <button className="hidden md:flex items-center gap-2 px-6 py-3 bg-white rounded-3xl border-[8px] border-[#3D2B1F] hover:bg-yellow-100 transition">
-              🔍 搜玄学
-            </button>
-
-            {/* Today Luck */}
-            <button 
-              onClick={() => alert('今日猫运功能开发中...')} 
-              className="flex items-center gap-2 px-6 py-3 bg-orange-400 hover:bg-orange-500 text-white rounded-3xl border-[8px] border-[#3D2B1F] transition hover:scale-105"
-            >
-              ⭐ 今日猫运
-            </button>
-
-            {/* Login */}
-            <button className="flex items-center gap-2 px-6 py-3 bg-white rounded-3xl border-[8px] border-[#3D2B1F] hover:bg-pink-100 transition">
-              🐾 铲屎官登录
-            </button>
-
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section - Optimized for All Devices */}
       <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden py-8 md:py-0">
         {/* Background */}
-        <div className="absolute inset-0 bg-[url('https://picsum.photos/id/53/2000/1200')] bg-cover bg-center" 
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-400 via-orange-300 to-blue-400"
             style={{ filter: 'contrast(1.05) saturate(1.15)' }}>
           <div className="absolute inset-0 bg-gradient-to-br from-pink-400/30 to-blue-400/30" />
         </div>

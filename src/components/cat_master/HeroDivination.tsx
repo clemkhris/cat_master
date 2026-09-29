@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useLanguage } from '@src/hooks/useLanguage';
 
 interface DivinationResult {
   title: string;
@@ -12,7 +11,6 @@ interface DivinationResult {
 }
 
 export default function HeroDivination() {
-  const { t } = useLanguage();
   const [result, setResult] = useState<DivinationResult | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
